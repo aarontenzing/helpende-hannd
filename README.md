@@ -12,3 +12,7 @@ De statistieken bevatten gemiddelde wachtijd, hoogst aantal wachtende studenten.
 Uitbreiding:  
 + Applicatie op smartphone waar leerkracht knop groen maakt.
 + Foto van klas in vogelvlucht die aangeeft waar mensen zitten.   
+
+# Componenten
+
+
