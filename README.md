@@ -1,5 +1,7 @@
 # helpende-hannd
 
+==> Jef Verhaegen, Jonas Lemmens, Aaron Van Campenhout
+
 We maken gebruik van een algemene server die draait op een raspberry pi. Raspberry pi is verbonden met een scherm dat
 vooraan in het klaslokaal staat. Op dit scherm kan je bekijken wie in de wachtrij staat en andere statistieken.
 
