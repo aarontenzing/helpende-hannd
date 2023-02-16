@@ -1,4 +1,4 @@
-# helpende-hannd
+# Helpende-hannd
 
 - Jef Verhaegen, Jonas Lemmens, Aaron Van Campenhout
 
