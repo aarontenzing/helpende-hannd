@@ -15,4 +15,6 @@ Uitbreiding:
 
 # Componenten
 
-
+ESP32 of ESP8266
+Raspberry Pi
+Button en LED
