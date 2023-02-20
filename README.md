@@ -1,6 +1,6 @@
 # Helpende-hannd
 
-- Jef Verhaegen, Jonas Lemmens, Aaron Van Campenhout
+- Jef Verhaegen, Jonas Lemmens en Aaron Van Campenhout
 
 We maken gebruik van een webserver die draait op een raspberry pi. Deze raspberry pi is verbonden met een monitor dat
 vooraan in het klaslokaal staat. Op deze monitor kan je bekijken wie in de wachtrij staat en andere statistieken raadplegen.
