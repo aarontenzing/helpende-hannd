@@ -1,8 +1,9 @@
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import time
+import codecs
 
 HOST = "192.168.56.1"
-PORT = 8000
+PORT = 80
 
 class testserverHTTP(BaseHTTPRequestHandler):
 
@@ -11,7 +12,11 @@ class testserverHTTP(BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-        self.wfile.write(home.html)
+        self.path = '/home.html'
+        with open(self.path[1:], 'rb') as f:
+            self.wfile.write(f.read())
+            
+        #self.wfile.write(bytes(f.read(), "utf-8"))
 
     def do_POST(self):
         self.send_response(200)
