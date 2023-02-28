@@ -10,14 +10,15 @@
 #define STAPSK "your-password"
 #endif
 
-const char* ssid = "servertje";
-const char* password = "ditismijnservertje";
+const char* ssid = "servetje";
+const char* password = "HE6d0tk93CZx";
 
-const char* host = "192.168.137.1";
+const char* host = "192.168.0.240";
 const uint16_t port = 80;
 
-int led = 2;
-int button = 3;
+const int LED = 2;
+const int BUTTON = 3;
+int state = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -46,8 +47,8 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-  pinMode(led, OUTPUT);
-  pinMode(button, INPUT_PULLUP);
+  pinMode(LED, OUTPUT);
+  pinMode(BUTTON, INPUT_PULLUP);
 }
 
 
@@ -67,17 +68,18 @@ void loop() {
     return;
   }
 
+  state = digitalRead(BUTTON);
   // This will send a string to the server
   Serial.println("sending data to server");
   if (client.connected()) {
-    if (!digitalRead(button)){
-      client.println("");
-      digitalWrite(led, LOW);
+    if (state == LOW){
+      client.println("http//:172.0.1:?var=1,var2=button4");
+      digitalWrite(LED, HIGH);
       delay(1000);
-      digitalWrite(led, HIGH);
+      digitalWrite(LED, LOW);
     }
     else {
-      digitalWrite(led, HIGH);
+      digitalWrite(LED, HIGH);
     }
   }
 
