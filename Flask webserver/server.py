@@ -1,13 +1,11 @@
 from flask import Flask, render_template, request
 import numpy as np
+from queue_list import add_queue, print_queue
 
 app = Flask(__name__)
 
-users = []
-users.append(["10","time:17:02"])
-users.append(["11","time:17:04"])
-
-
+user_list = []
+time_list = []
 
 @app.route("/")
 def home():
@@ -18,19 +16,13 @@ def login():
     return render_template("login.html")
 
 @app.route("/queue",methods=["GET","POST"])
-def get_queue():
+def queue():
     if request.method == "POST":
         cid = request.form.get('cid')
-        print(cid)
-        users.append(cid)
-        return render_template('queue.html',cid=cid)
+        add_queue(cid, user_list, time_list)
+        return render_template('queue.html',users=user_list,time=time_list)
     else:
         return render_template('queue.html')
-
-def post_queue():
-    data = request.form['data']
-    return render_template('queue.html', data=data)
-
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
