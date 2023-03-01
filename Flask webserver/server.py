@@ -18,9 +18,9 @@ def login():
 @app.route("/queue",methods=["GET","POST"])
 def queue():
     if request.method == "POST":
-        cid = request.form.get('cid')
-        add_queue(cid, user_list, time_list)
-        return render_template('queue.html',users=user_list,time=time_list)
+        cid = request.form['cid']
+        print(add_queue(cid, user_list, time_list))
+        return render_template('queue.html',users=user_list,time=time_list) 
     else:
         return render_template('queue.html')
 
