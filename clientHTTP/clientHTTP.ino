@@ -2,16 +2,18 @@
 #include <ESP8266HTTPClient.h>
 
 
-const char* ssid = "telenet-vc";
-const char* password = "HE6d0tk93CZx";
-const char* serverUrl = "http://192.168.0.229:5000/queue";
-const int cid = 1;
+const char* ssid = "servertje";
+const char* password = "ditismijnservertje";
+const char* serverUrl = "http://10.67.128.33:5000/queue";
+const int cid = 8;
 
 const int buttonPin = 0; // GPIO0
 const int ledPin = 2; // GPIO2
 
-int ButtonState = 1;
-int PrevButtonState = 1;
+int ButtonState = HIGH;
+int currentState;
+
+int ledState = HIGH;
 
 void setup() {
 
@@ -33,14 +35,18 @@ void setup() {
 
 void loop() {
   // status van knop
-  ButtonState = digitalRead(buttonPin);
-  delay(10);
-  if(ButtonState != PrevButtonState)
+  currentState = digitalRead(buttonPin);
+  digitalWrite(ledPin,ledState);
+  if(currentState == LOW && ButtonState == HIGH)
   {
       Serial.println("Button pressed!");
       sendData();
   }
-  PrevButtonState = ButtonState;
+  else if(currentState == HIGH && ButtonState == LOW)
+  {
+    Serial.println("Button released");    
+  }
+  ButtonState = currentState;
 }
 
 void sendData() {

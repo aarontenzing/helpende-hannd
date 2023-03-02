@@ -21,9 +21,9 @@ def queue():
         cid = request.form['cid']
         add_queue(cid, user_list, time_list)
         print_queue(user_list,time_list)
-        return render_template('queue.html',users=user_list,time=time_list) 
+        return render_template('queue.html',cid=cid) 
     else:
-        return render_template('queue.html')
+        return render_template('queue.hmlt')
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
