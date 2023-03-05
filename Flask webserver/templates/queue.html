@@ -2,5 +2,10 @@
 {% block title %}Queue Page{% endblock %}
 
 {% block content %}
-<p>Hier vind de je de wachtrij: {{ cid }}</p>
+<p>Hier vind de je de wachtrij:</p>
+<ol>
+{%for i in range(0, len)%}
+    <li>User {{users[i]}}, Join time: {{time[i]}}</li>
+{%endfor%}
+</ol>
 {% endblock %}

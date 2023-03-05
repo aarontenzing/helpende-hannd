@@ -18,12 +18,12 @@ def login():
 @app.route("/queue",methods=["GET","POST"])
 def queue():
     if request.method == "POST":
-        cid = request.form['cid']
+        cid = request.form["cid"]
         add_queue(cid, user_list, time_list)
-        print_queue(user_list,time_list)
-        return render_template('queue.html',cid=cid) 
+        data = print_queue(user_list,time_list)
+        return render_template('queue.html', users=user_list, time=time_list, len = len(user_list))
     else:
-        return render_template('queue.hmlt')
+        return render_template('queue.html', users=user_list, time=time_list, len = len(user_list))
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')

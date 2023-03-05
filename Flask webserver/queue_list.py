@@ -7,7 +7,7 @@ def add_queue(cid, user_list, time_list):
 
     if(cid not in user_list):
         user_list.append(cid)
-        time_list.append(strftime("%c"))
+        time_list.append(strftime("%H:%M:%S"))
         return user_list, time_list
     
     else:
