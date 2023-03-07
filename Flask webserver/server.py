@@ -8,13 +8,12 @@ app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 user_list = []
 time_list = []
 
+class_list = []
+member_list = []
+
 @app.route("/")
 def home():
     return render_template("home.html")
-
-@app.route("/login")
-def login():
-    return render_template("login.html")
 
 @app.route("/queue",methods=["GET","POST"])
 def queue():
@@ -29,6 +28,14 @@ def queue():
 def get_values():
     data = {"users":user_list, "time":time_list}
     return jsonify(data)
+
+@app.route("/class", methods=["POST","GET"])
+def create_class():
+    if request.method == "POST":  
+        return jsonify()
+    else:
+        return render_template("class_form.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
