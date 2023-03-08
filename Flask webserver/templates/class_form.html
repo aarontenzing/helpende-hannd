@@ -11,10 +11,16 @@
     {
        $('#dynamictable').append('<tr><td></td><td><input type="text" placeholder="Enter student"></td></tr>');
     }
+
+    function create_class()
+    {
+        alert("Done!")
+    }
     
     </script>
 </head>
 <body>
+    <form type="POST" onsubmit="create_class()">
     <table id="dynamictable">
         <tr>
             <th>
@@ -36,7 +42,7 @@
         <tr>
             <td></td>
             <td><input type="text" placeholder="Enter student"></td>
-            <td></td>
+            <td><input type="submit" value="submit"></td>
         </tr>
         <tr>
             <td></td>
@@ -54,5 +60,6 @@
             <td></td>
         </tr>
     </table> 
+    </form>
 </body>
 </html>

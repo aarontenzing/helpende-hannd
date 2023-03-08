@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 import numpy as np
 from queue_list import add_queue
+from write_json import write
 
 app = Flask(__name__)
 app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
@@ -19,7 +20,7 @@ def home():
 def queue():
     if request.method == "POST":
         cid = request.form["cid"]
-        add_queue(cid, user_list, time_list)
+        tmp = add_queue(cid, user_list, time_list)
         return "succes"
     else:
         return render_template('queue.html')
@@ -32,10 +33,10 @@ def get_values():
 @app.route("/class", methods=["POST","GET"])
 def create_class():
     if request.method == "POST":  
+
         return jsonify()
     else:
         return render_template("class_form.html")
-
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0')
