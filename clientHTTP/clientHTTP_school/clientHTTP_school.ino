@@ -1,18 +1,15 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
 
-
 const char* ssid = "servertje";
 const char* password = "ditismijnservertje";
-const char* serverUrl = "http://10.67.128.33:5000/queue";
+const char* serverUrl = "http://10.67.128.154:5000/queue";
 const int cid = 8;
 
 const int buttonPin = 0; // GPIO0
 const int ledPin = 2; // GPIO2
 
 int ButtonState = HIGH;
-int currentState;
-
 int ledState = HIGH;
 
 void setup() {
@@ -34,19 +31,20 @@ void setup() {
 }
 
 void loop() {
-  // status van knop
-  currentState = digitalRead(buttonPin);
-  digitalWrite(ledPin,ledState);
-  if(currentState == LOW && ButtonState == HIGH)
-  {
-      Serial.println("Button pressed!");
-      sendData();
+
+  // Status van de knop  
+  if(!digitalRead(buttonPin)) {
+      delay(5);
+      if(!digitalRead(buttonPin)) {
+          Serial.println("Button pressed!");
+          sendData();
+          digitalWrite(ledPin, !ledState);
+          while(!digitalRead(buttonPin)) {
+              delay(5);
+          }
+      }
   }
-  else if(currentState == HIGH && ButtonState == LOW)
-  {
-    Serial.println("Button released");    
-  }
-  ButtonState = currentState;
+
 }
 
 void sendData() {
@@ -70,6 +68,5 @@ void sendData() {
       Serial.println(responseCode);
     }
     http.end(); // beëindig de HTTP-verbinding
-    delay(1000);
 }
 

@@ -1,6 +1,6 @@
 import json
 
-
-def write(data,filename = 'data.json'):
-    with open(filename, 'w') as f:
-        json.dump(data, f, indent=4)
+def write(data):
+    file1 = open('data_list.txt', "a")  # append mode
+    file1.write(data + "\n")
+    file1.close()
