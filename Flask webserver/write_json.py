@@ -4,7 +4,7 @@ def write(data, filename):
     
     with open(filename, 'r') as f:
         try:
-            file_data = json.load(f)
+            file_data = json.load(f) # file content to python list
             print(file_data)
 
         except json.decoder.JSONDecodeError:
