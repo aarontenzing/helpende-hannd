@@ -26,7 +26,7 @@ def queue():
 @app.route("/values", methods=["GET"])
 def get_values():
     if request.method == "GET":
-        data = {"users":user_list, "time":time_list}
+        data = {'users':user_list, 'time':time_list}
         return jsonify(data)
     else:
         return "Not allowed"

@@ -1,0 +1,22 @@
+[
+    {
+        "cid": "3",
+        "time": "16:33:01",
+        "entry": "joined"
+    },
+    {
+        "cid": "3",
+        "time": "16:33:28",
+        "entry": "left"
+    },
+    {
+        "cid": "2",
+        "time": "16:33:33",
+        "entry": "joined"
+    },
+    {
+        "cid": "1",
+        "time": "16:34:31",
+        "entry": "joined"
+    }
+]
