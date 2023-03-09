@@ -9,9 +9,6 @@ app.config['CORS_HEADERS'] = 'Access-Control-Allow-Origin'
 user_list = []
 time_list = []
 
-class_list = []
-member_list = []
-
 @app.route("/")
 def home():
     return render_template("home.html")
@@ -20,20 +17,23 @@ def home():
 def queue():
     if request.method == "POST":
         cid = request.form["cid"]
-        tmp = add_queue(cid, user_list, time_list)
+        print(user_list)
+        add_queue(cid, user_list, time_list)
         return "succes"
     else:
         return render_template('queue.html')
     
-@app.route("/values")
+@app.route("/values", methods=["GET"])
 def get_values():
-    data = {"users":user_list, "time":time_list}
-    return jsonify(data)
+    if request.method == "GET":
+        data = {"users":user_list, "time":time_list}
+        return jsonify(data)
+    else:
+        return "Not allowed"
 
 @app.route("/class", methods=["POST","GET"])
 def create_class():
     if request.method == "POST":  
-
         return jsonify()
     else:
         return render_template("class_form.html")
